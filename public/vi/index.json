@@ -1,0 +1,85 @@
+[
+{
+	"uri": "//localhost:1313/vi/",
+	"title": "AWS Backup",
+	"tags": [],
+	"description": "",
+	"content": "Sao lưu và khôi phục Amazon EC2 bằng AWS Backup Tổng Quan Trong bài thực hành này, bạn sẽ tìm hiểu cơ bản và thực hành về AWS Backup:\nTạo công việc sao lưu theo yêu cầu (on-demand) cho một phiên bản Amazon EC2. Sử dụng kế hoạch sao lưu (backup plan) để tự động hóa việc sao lưu tài nguyên Amazon EC2 theo lịch. Thêm tài nguyên vào kế hoạch sao lưu hiện có bằng cách sử dụng thẻ (tags). Nội dung Giới Thiệu Preparation Create on-demand AWS Backup Jobs Restore an Amazon EC2 instance using AWS Backup Clean up resources "
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/2.1-createec2/",
+	"title": "Chuẩn bị EC2",
+	"tags": [],
+	"description": "",
+	"content": "Introduce Amazon Elastic Compute Cloud (Amazon EC2) là dịch vụ web cung cấp khả năng tính toán an toàn và có thể thay đổi kích thước trên nền tảng đám mây.\nTại sao lại là Amazon EC2? Amazon Elastic Compute Cloud (Amazon EC2) cung cấp nền tảng điện toán rộng nhất và sâu nhất, với hơn 750 phiên bản và tùy chọn bộ xử lý, lưu trữ, mạng, hệ điều hành và mô hình mua hàng mới nhất để giúp bạn đáp ứng tốt nhất nhu cầu về khối lượng công việc của mình. Chúng tôi là nhà cung cấp dịch vụ đám mây lớn đầu tiên hỗ trợ bộ xử lý Intel, AMD và Arm, là đám mây duy nhất có phiên bản EC2 Mac theo yêu cầu và là đám mây duy nhất có mạng Ethernet 400 Gbps. Chúng tôi cung cấp hiệu suất giá tốt nhất cho đào tạo máy học, cũng như chi phí cho mỗi phiên bản suy luận thấp nhất trên đám mây. Nhiều khối lượng công việc SAP, điện toán hiệu suất cao (HPC), ML và Windows chạy trên AWS hơn bất kỳ đám mây nào khác.\nLợi ích của Amazon EC2 Cam kết SLA: Truy cập cơ sở hạ tầng đáng tin cậy, có thể mở rộng theo yêu cầu. Mở rộng dung lượng trong vòng vài phút với cam kết SLA về khả năng sử dụng 99,99%. AWS Nitro System: Cung cấp khả năng tính toán an toàn cho các ứng dụng của bạn. Bảo mật được tích hợp vào nền tảng của Amazon EC2 với AWS Nitro System. Tối ưu hóa hiệu suất và chi phí: Tối ưu hóa hiệu suất và chi phí với các tùy chọn linh hoạt như phiên bản dựa trên AWS Graviton, phiên bản Amazon EC2 Spot và AWS Savings Plans. AWS Migration Tools: Di chuyển và xây dựng ứng dụng dễ dàng bằng AWS Migration Tools, AWS Managed Services hoặc Amazon Lightsail. Tìm hiểu cách AWS có thể giúp bạn. Để tìm hiểu thêm về AWS EC2, bạn có thể tham khảo trang web bên dưới được mô tả\nAbout AWS EC2 Nội dung Create EC2 "
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/2.1-createec2/2.1.1-createev2/",
+	"title": "Create EC2",
+	"tags": [],
+	"description": "",
+	"content": "Create EC2 Truy cập AWS Management Console và mở AWS EC2 Console\nClick EC2 Trong bảng điều hướng bên trái của AWS EC2 console, dưới mục Intances, chọn Intances, sau đó chọn Launch Instance. Trên trang Launch an instance, tại mục Name, nhập tên cho instance. Trông tab Quick Start, chọn Amazon Linux. Sau đó chọn Amazon Linux 2023 AMI và Architecture như hình bên dưới. Dưới mục Instance Type, chọn t2.micro. Ở các mục Key pair, Network settings, Configure storage và Advanced details để mặc định.\nNhấp vào Launch instance Trở lại trang Instances, bạn sẽ thấy một phiên bản EC2 vừa được tạo. Chờ cho Status check 2/2, và làm mới trang(F5) nếu cần. "
+},
+{
+	"uri": "//localhost:1313/vi/1-introduce/",
+	"title": "Giới thiệu",
+	"tags": [],
+	"description": "",
+	"content": "AWS Backup cho phép bạn tập trung hóa và tự động hóa việc bảo vệ dữ liệu trên các dịch vụ AWS. AWS Backup cung cấp một dịch vụ chi phí hiệu quả, được quản lý hoàn toàn và dựa trên chính sách, giúp đơn giản hóa việc bảo vệ dữ liệu ở quy mô lớn. AWS Backup hỗ trợ bạn trong việc đáp ứng các yêu cầu tuân thủ quy định và đạt được mục tiêu về tính liên tục trong kinh doanh.\nKhi sử dụng AWS Backup, bạn nhận được các lợi ích sau:\nCó thể tạo các chính sách sao lưu được gọi là backup plans (kế hoạch sao lưu). Có thể sử dụng các kế hoạch này để xác định các yêu cầu sao lưu, chẳng hạn như tần suất sao lưu dữ liệu và thời gian lưu giữ các bản sao lưu đó. AWS Backup cho phép bạn áp dụng các kế hoạch sao lưu vào tài nguyên AWS của mình bằng cách gắn thẻ (tagging) cho chúng. Trong bài thực hành này, chúng ta sẽ thực hiện sao lưu AWS với các phiên bản Amazon Elastic Compute Cloud (Amazon EC2). Khi sử dụng AWS Backup với các phiên bản Amazon EC2, bạn có thể tập trung hóa việc kiểm soát tuân thủ và chính sách sao lưu, tăng cường lựa chọn bảo mật cho tổ chức của mình và truy cập ngay các tính năng và chức năng ở cấp độ doanh nghiệp. Với các ưu điểm nêu trên, bạn có thể sử dụng AWS Backup để lưu trữ tài nguyên và khôi phục chúng khi gặp sự cố với dữ liệu của mình. "
+},
+{
+	"uri": "//localhost:1313/vi/3-backupjobs/3.1-backup-jobs/",
+	"title": "Tạo tác vụ AWS Backup theo yêu cầu của phiên bản Amazon EC2",
+	"tags": [],
+	"description": "",
+	"content": " Mở AWS Backup console\nCấu hình các dịch vụ được sử dụng với AWS Backup\nỞ phía bên trái của AWS Backup console, trong My account, chọn Cài đặt. Trên trang Service opt-in, chọn Configure resources. Trên trang Configure resources, sử dụng các công tắc chuyển đổi để bật hoặc tắt các dịch vụ được sử dụng với AWS Backup. Trong phòng thí nghiệm này, chỉ chọn EC2, sau đó nhấp vào Confirm. Quay trở lại AWS Backup, trong My account ở ngăn điều hướng bên trái, chọn Protected resources. Nhấp vào nút Create on-demand backup. Trên trang Tạo bản sao lưu theo yêu cầu, hãy chọn các tùy chọn sau:\nChọn Resource type là EC2. Chọn Instance ID of the EC2 rmà bạn vừa tạo ở chương trước. Chọn Create backup now trong Backup window. Chọn Forever cho TOtal retention period. Select Default cho Backup vault. Tùy chọn, bạn có thể tạo kho lưu trữ sao lưu của riêng mình. Chọn Default role trong IAM role. Nhấp chọn Create on-demand backup. Trên trang Jobs, bạn sẽ thấy các công việc sao lưu mà bạn đã tạo. Chọn Backup job ID để xem thông tin chi tiết về tác vụ đó.\n"
+},
+{
+	"uri": "//localhost:1313/vi/3-backupjobs/3.2-configure-backup-jobs/",
+	"title": "Cấu hình các tác vụ sao lưu AWS tự động",
+	"tags": [],
+	"description": "",
+	"content": " Trong AWS Backup console, chọn Backup plans ở thanh điều hướng bên trái dưới mục My account, sau đó nhấn Create backup plan. Trên trang Create backup plans , chọn các tùy chọn sau: Chọn Build a new plan. Nhập Tên kế hoạch sao lưu backup plan name. Nhập Tên quy tắc sao lưu Backup rule name. Chọn Default cho Backup vault. Hoặc tùy chọn, bạn có thể tạo vault sao lưu của riêng mình. Chọn Daily cho Backup frequency (Tần suất sao lưu). Backup windows bao gồm thời gian bắt đầu của cửa sổ sao lưu và thời lượng của cửa sổ (tính bằng giờ). Lab này sẽ đặt giá trị mặc định, hoặc bạn có thể tự cấu hình theo ý muốn. Chọn Forever cho Total retention period. Cuối cùng, nhấp vào Create plan. Quay lại trang Backup plans, bạn sẽ thấy kế hoạch sao lưu mà bạn vừa tạo. Nhấp vào Backup plan để xem chi tiết. Trên trang EC2-backup-plan, chọn nút Assign resources. Nhập Resource assignment name(Tên phân công tài nguyên). Sau đó chọn Default role trong phần IAM role. Trong phần Define resource selection, chọn Include specific resource types. Sau đó chọn Resource types là EC2. Cuối cùng, nhấn nút Assign resources . Trở lại trang AWS Backup console. Các công việc sao lưu sẽ xuất hiện trong mục Jobs. "
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/",
+	"title": "Preparation ",
+	"tags": [],
+	"description": "",
+	"content": "\rBạn cần tạo một AWS EC2 Instance để thực hiện bài thực hành này.\nỞ bước này, bạn sẽ tạo một AWS EC2 Instance Linux. Content Preparing EC2 "
+},
+{
+	"uri": "//localhost:1313/vi/3-backupjobs/",
+	"title": "Tạo công việc sao lưu AWS theo yêu cầu",
+	"tags": [],
+	"description": "",
+	"content": "Ở bước này, chúng ta sẽ tạo một tác vụ sao lưu để bảo vệ tài nguyên EC2.\nContent 3.1. Tạo công việc sao lưu AWS 3.2. Cấu hình các tác vụ sao lưu AWS tự động\n"
+},
+{
+	"uri": "//localhost:1313/vi/4-restore-backup/",
+	"title": "Khôi phục phiên bản Amazon EC2 bằng AWS Backup",
+	"tags": [],
+	"description": "",
+	"content": " Trong AWS Backup console, chọn Vaults trong thanh điều hướng bên trái dưới phần My account, sau đó chọn Default trên trang Vaults. Chọn bản sao lưu mới nhất đã hoàn tất. Chọn Restore Trong phần Network settings, giữ nguyên cài đặt mặc định hoặc chỉ định các tùy chọn cho: Instance type, Virtual Private Cloud (VPC), Subnet, Security groups, and Instance IAM role settings.\nChọn Proceed with no IAM role trong phần Instance IAM role. Để tiếp tục bước sau, bạn cần hai chính sách được quản lý: AWSBackupServiceRolePolicyForBackup và AWSBackupServiceRolePolicyForRestores để tiếp tục các bước sau.\nTrong phần Restore section, chọn Default role Bỏ qua phần Advanced settings (giữ nguyên mặc định) và nhấn nút Restore backup. Kiểm tra công việc khôi phục của bạn trong phần Restore jobs tại AWS Backup console. Chuyển đến Amazon EC2 console và chọn Instances trong thanh điều hướng bên trái để xem phiên bản EC2 đã được khôi phục. "
+},
+{
+	"uri": "//localhost:1313/vi/5-cleanup/",
+	"title": "Dọn dẹp tài nguyên",
+	"tags": [],
+	"description": "",
+	"content": "Chúng ta sẽ thực hiện các bước sau để xóa tài nguyên đã tạo trong bài thực hành này.\nXóa phiên bản EC2 Truy cập EC2 service management console Nhấp vào Instances. Chọn cả EC2 Backup Lab và các phiên bản EC2 Backup Lab đã được khôi phục. Nhấn vào Instance state. Nhấn vào Terminate instance, sau đó nhấn vào Terminate để xác nhận. Xóa điểm khôi phục của AWS Backup Truy cập AWS Backup Console Nhấn vào Vaults. Nhấn vào kho lưu trữ Default. Chọn Recovery point. Nhấn vào Actions, sao đó chọn delete. Xóa kế hoạch sao lưu AWS Backup Truy cập AWS Backup Console Chọn Backup plans. Nhấp vào tên kế hoạch sao lưu EC2-backup-plan . Chọn EC2-resources trong phần Resource assignments. Nhấn Delete. "
+},
+{
+	"uri": "//localhost:1313/vi/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:1313/vi/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

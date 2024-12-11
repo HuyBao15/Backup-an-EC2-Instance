@@ -1,0 +1,85 @@
+[
+{
+	"uri": "//localhost:1313/",
+	"title": "AWS Backup",
+	"tags": [],
+	"description": "",
+	"content": "Amazon EC2 Backup and Restore Using AWS Backup Overall In this lab, you\u0026rsquo;ll learn the basics and practice of Amazon Backup.\nCreate an on-demand backup job of an Amazon EC2 instance. Use a backup plan to back up Amazon EC2 resources — using a backup plan within AWS Backup lets you automate your backups on a schedule. Add resources to an existing backup plan using tags Content Introduction Preparation Create on-demand AWS Backup Jobs Restore an Amazon EC2 instance using AWS Backup Clean up resources "
+},
+{
+	"uri": "//localhost:1313/3-backupjobs/3.1-backup-jobs/",
+	"title": "Create an on-demand AWS Backup job of an Amazon EC2 instance",
+	"tags": [],
+	"description": "",
+	"content": " Open the AWS Backup console\nConfigure the services used with AWS Backup\nOn the left side of AWS Backup console, under My account, choose Settings. On the Service opt-in page, choose Configure resources. On the Configure resources page, use the toggle switches to enable or disable the services used with AWS Backup. In this lab, only select EC2, then click Confirm. Back in the AWS Backup console, under My account in the left navigation pane, select Protected resources. Click Create on-demand backup button. On the Create on-demand backup page, choose the following options:\nSelect Resource type is EC2. Select Instance ID of the EC2 resource that you just created in the previous chapter. Choose Create backup now under the Backup window. Select Forever for TOtal retention period. Select Default for Backup vault. Optionally, you can create your own backup vault. Choose Default role under IAM role. Click Create on-demand backup. On the Jobs page, you will see the backup jobs you created. Choose the Backup job ID to see the details of that job.\n"
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/2.1.1-createev2/",
+	"title": "Create EC2",
+	"tags": [],
+	"description": "",
+	"content": "Create EC2 Go to AWS Management Console and open AWS EC2 Console\nClick EC2 In the navigation pane on the left side of the AWS EC2 console, under Intances, choose Intances, then choose Launch Instance. On the Launch an instance page, under the Name section, enter name for your instance. In Quick Start tab, choose Amazon Linux. Then choose Amazon Linux 2023 AMI and Architecture like below. Under the Instance Type, select t2.micro. Key pair, Network settings, Configure storage and Advanced details section set like default.\nClick Launch instance Back in the Instances page, you\u0026rsquo;ll see an EC2 instance that you just created. Wait for Status check is 2/2, f5 as needed. "
+},
+{
+	"uri": "//localhost:1313/1-introduce/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "AWS Backup enables you to centralize and automate data protection across AWS services. AWS Backup offers a cost-effective, fully managed, policy-based service that simplifies data protection at scale. AWS Backup helps you support your regulatory compliance obligations and meet your business continuity goals.\nBy using AWS Backup, you get the following benefits:\nCan create backup policies called backup plans. Can use these plans to define your backup requirements, such as how frequently to back up your data and how long to retain those backups. AWS Backup lets you apply backup plans to your AWS resources by simply tagging them. This lab will perform AWS Backup with Amazon Elastic Compute Cloud (Amazon EC2) instances. When using AWS Backup with Amazon EC2 instances, you can centralize your compliance and policy control for backups, increase security choices for your organization, and access instant enterprise-level features and functionality.\nWith the above advantages, you can use AWS Backup to store resources and restore it when you have problems with your data. "
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/",
+	"title": "Preparing EC2",
+	"tags": [],
+	"description": "",
+	"content": "Introduce Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud.\nWhy Amazon EC2? Amazon Elastic Compute Cloud (Amazon EC2) offers the broadest and deepest compute platform, with over 750 instances and choice of the latest processor, storage, networking, operating system, and purchase model to help you best match the needs of your workload. We are the first major cloud provider that supports Intel, AMD, and Arm processors, the only cloud with on-demand EC2 Mac instances, and the only cloud with 400 Gbps Ethernet networking. We offer the best price performance for machine learning training, as well as the lowest cost per inference instances in the cloud. More SAP, high performance computing (HPC), ML, and Windows workloads run on AWS than any other cloud.\nBenefits of Amazon EC2 SLA commitment: Access reliable, scalable infrastructure on demand. Scale capacity within minutes with SLA commitment of 99.99% availability. AWS Nitro System: Provide secure compute for your applications. Security is built into the foundation of Amazon EC2 with the AWS Nitro System. Optimize performance and cost: Optimize performance and cost with flexible options like AWS Graviton-based instances, Amazon EC2 Spot instances, and AWS Savings Plans. AWS Migration Tools: Migrate and build apps with ease using AWS Migration Tools, AWS Managed Services, or Amazon Lightsail. Learn how AWS can help. To learn more about AWS EC2, you can refer to the website below described\nAbout AWS EC2 Content Create EC2 "
+},
+{
+	"uri": "//localhost:1313/3-backupjobs/3.2-configure-backup-jobs/",
+	"title": "Configure automatic AWS Backup jobs",
+	"tags": [],
+	"description": "",
+	"content": " In the AWS Backup console, select Backup plans in the left navigation pane under My account, and then Create backup plan. Under the Create backup plans page, choose the following options: select Build a new plan. Enter backup plan name. Enter Backup rule name. Select Default for Backup vault. Optionally, you can create your own backup vault. Select Daily for Backup frequency. Backup windows consist of the time that the backup window begins and the duration of the window in hours. This lab will set default or you can set whatever you want. Select Forever for Total retention period. Finally, click Create plan. Back in to the Backup plans page, you will see the backup plan you just created. Click that Backup plan to see details. Then on the EC2-backup-plan page, choose Assign resources button. Enter Resource assignment name. Then choose Default role under IAM role section. Under Define resource selection, choose Include specific resource types. Then select Resource types is EC2. Finally, click Assign resources button. Navigate to the AWS Backup console. The backup jobs will be seen under Jobs. "
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/",
+	"title": "Preparation ",
+	"tags": [],
+	"description": "",
+	"content": "\rYou need to create an AWS EC2 Instance to perform this lab.\nIn this step, you will create an AWS EC2 Instance Linux. Content Preparing EC2 "
+},
+{
+	"uri": "//localhost:1313/3-backupjobs/",
+	"title": "Create on-demand AWS Backup Jobs",
+	"tags": [],
+	"description": "",
+	"content": "In this step, we will create a backup job to protect EC2 resources.\nContent 3.1. Create AWS Backup Jobs 3.2. Configure automatic AWS Backup jobs\n"
+},
+{
+	"uri": "//localhost:1313/4-restore-backup/",
+	"title": "Restore an Amazon EC2 instance using AWS Backup",
+	"tags": [],
+	"description": "",
+	"content": " In the AWS Backup console, select Vaults in the left navigation pane under My account, then click the Default vault in the Vaults page. Select the latest completed backup. Choose Restore In the Network settings pane, accept the defaults or specify the options for the Instance type, Virtual Private Cloud (VPC), Subnet, Security groups, and Instance IAM role settings.\nChoose Proceed with no IAM role under the Instance IAM role section. You must have two managed policies: AWSBackupServiceRolePolicyForBackup and AWSBackupServiceRolePolicyForRestores to continue the following step\nUnder the Restore section section, choose Default role Ignore Advanced settings (accept the defaults) and click Restore backup button. Check for your restored backup job under Restore jobs in the the AWS Backup console. Navigate to the Amazon EC2 console and select Instances in the left navigation pane to see the restored EC2 instance. "
+},
+{
+	"uri": "//localhost:1313/5-cleanup/",
+	"title": "Clean up resources",
+	"tags": [],
+	"description": "",
+	"content": "We will take the following steps to delete the resources we created in this exercise.\nDelete EC2 Instances Go to EC2 service management console Click Instances. Select both EC2 Backup Lab and restored EC2 Backup Lab instances. Click Instance state. Click Terminate instance, then click Terminate to confirm. Delete the AWS Backup recovery point Go to AWS Backup Console Click Vaults. Click Default vault. Choose the Recovery point. Click Actions, then click delete. Delete the AWS Bacup Plans Go to AWS Backup Console Click Backup plans. Click the EC2-backup-plan Backup plan name. Choose EC2-resources under the Resource assignments section. Click Delete. "
+},
+{
+	"uri": "//localhost:1313/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:1313/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
